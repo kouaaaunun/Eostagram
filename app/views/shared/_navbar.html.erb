@@ -6,21 +6,24 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="eostaform">
       <%= form_tag users_path, method: :get, class: "form-inline my-2 my-lg-0 ml-md-auto", id: "users-search",
         remote: true do %>
         <%= text_field_tag :term, params[:term], class: "form-control mr-sm-2 text-center common-btn",
           placeholder: "Search", autocomplete: "off" %>
         <div id="users-result"></div>
-      <% end %>
+      <% end %></div>
       <ul class="navbar-nav ml-md-auto">
         <li class="nav-item">
-          <a class="nav-link explore-icon" href="#"><i class="far fa-keyboard fa-2x"></i></a>
+          <a class="nav-link explore-icon" href="#"><i class="fas fa-snowboarding fa-2x fa-fw" style="color:pink;"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link core-sprite notification-icon hide-text" href="#">Notification</a>
+          <a class="nav-link notification-icon" href="#"><i class="far fa-sticky-note fa-2x fa-fw" style="color:pink;"></i></a>
         </li>
         <li class="nav-item">
-          <%= link_to "Profile", user_path(current_user), class: "nav-link core-sprite profile-icon hide-text" %>
+          <%= link_to user_path(current_user), class: "nav-link profile-icon" do%>
+          <i class="fas fa-file-powerpoint fa-2x fa-fw" style="color:pink;"></i>
+          <% end %>
         </li>
       </ul>
     </div>

@@ -7,7 +7,7 @@
       <p class="username"><%= @user.name %></p>
       <% if @user == current_user %>
         <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
-        <button type="button" class="core-sprite setting" data-toggle="modal" data-target="#exampleModal"></button>
+        <div class="setting" data-toggle="modal" data-target="#exampleModal"><i class="far fa-keyboard fa-2x fa-fw""></i></div>
       <% end %>
 
       <!-- Modal -->
