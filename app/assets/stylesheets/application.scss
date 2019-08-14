@@ -79,20 +79,22 @@ body {
 // Landing
 .landing-left {
   .dummy-phone {
-    background-image: image-url("dummy-phone-2x.png");
+    background-image: image-url("illust4562.png");
     background-repeat: no-repeat;
     background-position: right 0;
-    background-size: 454px 618px;
+    background-size: 454px 600px;
     position: relative;
     height: 618px;
     margin-left: -35px;
     margin-right: -15px;
+    margin-top: 20px;
   }
 
   .screen-shot {
     position: absolute;
-    top: 99px;
-    right: 63px;
+    top: 16px;
+    right: 18px;
+    z-index: -1;
 
     .item {
       position: absolute;
