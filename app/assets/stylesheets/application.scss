@@ -297,7 +297,7 @@ body {
 }
 
 .dz-remove {
-  @extend .core-sprite;
+  background-image: image-url("batsu.png");
   @extend .hide-text;
   position: absolute;
   top: 9px;
@@ -305,7 +305,6 @@ body {
   z-index: 20;
   width: 18px;
   height: 18px;
-  background-position: -386px -25px;
   opacity: 0;
   -webkit-transition: opacity 0.2s liner;
   transition: opacity 0.2s liner;
@@ -483,4 +482,8 @@ body {
 .popover-body {
   background: #fff;
   padding: 0;
+}
+
+.toast{
+  font-family: "eo";
 }

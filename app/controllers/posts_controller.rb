@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_post, only: [:show, :destroy]
+
 
   def index
     @posts = Post.all.includes(:photos, :user).order("created_at desc")
@@ -16,7 +18,7 @@ class PostsController < ApplicationController
       end
 
       redirect_to posts_path
-      flash[:notice] = "Success !"
+      flash[:notice] = "POST COMPLETE!"
     else
       flash[:alert] = "An error occured (´；ω；`)"
       redirect_to posts_path
@@ -24,13 +26,31 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @photos = @post.photos
+  end
+
+  def destroy
+    if @post.user == current_user
+      if @post.destroy
+        flash[:notice] = "POST DELETED…"
+      else
+        flash[:alert] = "Something went wrong ..."
+      end
+    else
+      flash[:notice] = "You don't have permission to do that!"
+    end
+    redirect_to root_path
   end
 
 
   private
+  def find_post
+    @post = Post.find_by id: params[:id]
 
+    return if @post
+    flash[:danger] = "Post not exist!"
+    redirect_to root_path
+  end
 
   def post_params
     params.require(:post).permit :content

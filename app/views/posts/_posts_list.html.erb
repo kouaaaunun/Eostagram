@@ -8,7 +8,11 @@
         title: post.user.name do %>
         <strong><%= post.user.name %></strong>
       <% end %>
-      
+      <% if post.is_belongs_to? current_user %>
+        <%= link_to post_path(post), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
+          <i class="far fa-trash-alt" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
     </div>
 
 <%= link_to post_path(post) do %>
