@@ -1,0 +1,10 @@
+<% if is_bookmarked.present? %>
+  <%= link_to bookmark_path(is_bookmarked), method: :delete, remote: true, class: "bookmarked" do%>
+    <i class="fas fa-folder fa-2x fa-fw" style="color:#1e90ff;"></i>
+  <% end %>
+<% else %>
+  <%= link_to post_bookmarks_path(post), method: :post, remote: true, class: "bookmark" do %>
+    <i class="fas fa-folder fa-2x fa-fw" style="color:#a9a9a9;"></i>
+  <% end %>
+
+<% end %>

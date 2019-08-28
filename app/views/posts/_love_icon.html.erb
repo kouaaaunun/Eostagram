@@ -1,0 +1,9 @@
+<% if is_loved.present? %>
+  <%= link_to love_path(is_loved), method: :delete, remote: true,class: "loved" do %>
+  <i class="fas fa-carrot fa-2x fa-fw" style="color:#2e8b57;"></i>
+  <% end %>
+<% else %>
+  <%= link_to post_loves_path(post), method: :post, remote: true, class: "love" do %>
+  <i class="fas fa-carrot fa-2x fa-fw" style="color:#a9a9a9;"></i>
+  <% end %>
+<% end %>

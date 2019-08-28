@@ -1,0 +1,17 @@
+<strong>
+  <% loves.each.with_index do |love, index| %>
+      <% if loves.size == 1 %>
+          <%= love.user.name %> </strong> feeds a Gysahl Greens.
+      <% elsif love == loves.last %>
+          </strong>and<strong>
+      <%= + love.user.name %></strong> feed Gysahl Greens.
+      <% elsif index > 1 %>
+          </strong><%= "and " + (loves.size-index).to_s + " others " %> feed Gysahl Greens.
+          <% break %>
+      <% elsif index==loves.size-2 || index==1%>
+          <%= love.user.name %>
+      <% else %>
+          <%= love.user.name + ", " %>
+      <% end %>
+  <% end %>
+</strong>

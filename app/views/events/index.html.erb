@@ -1,0 +1,75 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+    <div class="card">
+      <div class="card-header">
+        Create a new event !
+      </div>
+      <div class="card-body">
+        <%= form_for @event, :html => {:multipart => true, :class => "p-0 border-0"} do |f| %>
+          <div class="form-group row mt-2">
+            <div class="col-auto pr-0">
+              <%= image_tag avatar_url(current_user), class: "post-author-icon" %>
+            </div>
+            <div class="col pl-0">
+              <%= f.text_field :hashtag, class: "form-control border-0",
+                placeholder: "Write the event's hashtag. ex) #eorzea" %>
+            </div>
+          </div>
+          <div class="form-group  mt-2">
+            <div class="col-auto pr-0">
+              <%= f.text_field :content, class: "form-control border-0",
+                placeholder: "Write the event's content." %>
+            </div>
+          </div>
+         
+          <%= f.submit "Create", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+</div>
+    <div id="posts">
+      <% @events.each do |event| %>
+  <div class="card mt-3 post">
+    <div class="card-header d-flex align-items-center">
+      <%= link_to user_path(event.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(event.user), class: "post-author-icon" %>
+      <% end %>
+      <%= link_to user_path(event.user), class: "normal-color no-text-decoration",
+        title: event.user.name do %>
+        <strong><%= event.user.name %></strong>
+      <% end %>
+      <% if event.is_belongs_to? current_user %>
+        <%= link_to event_path(event), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
+          <i class="far fa-trash-alt" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <div class="ml-2"><h2><%= link_to page_path(event.hash_tags.first), class: "no-text-decoration normal-color" do %>
+        <%= event.hashtag %><% end %><small class="text-muted">　>Current post: <%= event.hash_tags.first.posts.count %></small></h2></div>
+      <div>
+        <span><%= event.content %></span>
+      </div>
+      <!-- load comments -->
+      <div class="light-color post-time no-text-decoration">
+        <%= time_ago_in_words(event.created_at).upcase + " AGO" %>
+      </div>
+        <hr>
+        <div class="row actions">
+        <div id="like-icon-event-<%= event.id.to_s %>">
+          <%= render "like_icon", {is_liked: event.is_liked(current_user), event: event} %>
+        </div>
+      </div>
+      <div id="like-text-event-<%= event.id.to_s %>">
+          <%= render "like_text", {likes: event.likes} %>
+      </div>
+              <hr>
+
+    </div>
+  </div>
+<% end %>
+    </div>
+  </div>
+</div>
+<br>
+    <%= will_paginate @events %>
+</div>

@@ -69,8 +69,7 @@ body {
 }
 
 .box {
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  background-color: #ffdbed;
   border-radius: 1px;
   padding: 10px 0;
   margin: 0 0 10px;
@@ -85,11 +84,11 @@ body {
 
 // Landing
 .landing-left {
-  .dummy-phone {
+  .frame {
     background-image: image-url("illust4562.png");
     background-repeat: no-repeat;
     background-position: right 0;
-    background-size: 454px 600px;
+    background-size: 455.5px 600px;
     position: relative;
     height: 618px;
     margin-left: -35px;
@@ -333,6 +332,7 @@ body {
   color: #262626;
 }
 
+
 // Customize post views
 .post {
   .card-header {
@@ -405,7 +405,7 @@ body {
 }
 
 .post-show-img {
-  background-color: #fafafa;
+  background-color: #ffdbed;
   margin: -10px 0;
 }
 
@@ -417,17 +417,17 @@ body {
 .delete-comment {
   width: 11px;
   height: 11px;
-  background-position: -216px -112px;
   float: right;
-  margin: 5px 0 0 10px;
+  margin-right: 3px;
+  background-size: contain;
 }
 
-.profile-tab {
+.user-tab {
   margin-top: 60px;
 
-  .nav-tabs {
+  .user-tabs {
     border: 0;
-    border-top: 1px solid #ddd;
+    border-top: 6px solid white;
 
     .nav-item {
       border-radius: 0;
@@ -441,8 +441,8 @@ body {
     }
 
     .nav-item.active {
-      color: #262626;
-      border-top: 1px solid #262626;
+    color: #262626;
+
     }
   }
 
@@ -460,12 +460,32 @@ body {
   .col-4:hover .post-stat {
     background-color: rgba(0,0,0,.3);
     opacity: 1;
+    z-index: 100;
   }
 
   .image-preview {
     margin-bottom: 30px;
   }
 }
+
+
+
+.rank-stat {
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    width: calc(100% - 30px);
+    height: calc(100% - 132px);
+    top: 102px;
+    opacity: 0;
+  }
+  
+  .col-4:hover .rank-stat {
+    background-color: rgba(0,0,0,.3);
+    opacity: 1;
+    z-index: 100;
+  }
 
 .search-result-item {
   padding: 15px;

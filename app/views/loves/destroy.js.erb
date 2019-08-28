@@ -1,0 +1,5 @@
+$('#love-icon-post-<%= @post.id.to_s %>').
+  html('<%= link_to post_loves_path(@post), method: :post, remote: true, class: "loved" do %><i class="fas fa-carrot fa-2x fa-fw" style="color:#a9a9a9;"></i><% end %>');
+$('#love-text-post-<%= @post.id.to_s %>').
+  html('<%= j render "posts/love_text", {loves: @post.loves} %>');
+console.log("delete love success");

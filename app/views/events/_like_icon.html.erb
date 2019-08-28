@@ -1,0 +1,9 @@
+<% if is_liked.present? %>
+  <%= link_to like_path(is_liked), method: :delete, remote: true, class: "liked" do %>
+  <i class="fas fa-circle-notch fa-2x fa-fw" style="color:red;"></i>
+  <% end %>
+<% else %>
+  <%= link_to event_likes_path(event), method: :post, remote: true, class: "like" do %>
+  <i class="fas fa-circle-notch fa-2x fa-fw" style="color:#a9a9a9;"></i>
+  <% end %>
+<% end %>

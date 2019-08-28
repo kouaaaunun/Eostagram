@@ -1,0 +1,5 @@
+$('#like-icon-event-<%= @event.id.to_s %>').
+  html('<%= link_to like_path(@like), method: :delete, remote: true, class: "like" do %><i class="fas fa-circle-notch fa-2x fa-fw" style="color:red;"></i><% end %>');
+$('#like-text-event-<%= @event.id.to_s %>').
+  html('<%= j render "events/like_text", {likes: @event.likes} %>');
+console.log("create like success");

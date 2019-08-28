@@ -6,8 +6,7 @@
     <div class="row">
       <p class="username"><%= @user.name %></p>
       <% if @user == current_user %>
-        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
-        <div class="setting" data-toggle="modal" data-target="#exampleModal"><i class="far fa-keyboard fa-2x fa-fw""></i></div>
+        <div class="setting pl-5" data-toggle="modal" data-target="#exampleModal"><i class="far fa-keyboard fa-2x fa-fw""></i></div>
       <% end %>
 
       <!-- Modal -->
@@ -21,7 +20,7 @@
               </button>
             </div>
             <div class="list-group text-center">
-              <a href="#" class="list-group-item list-group-item-action">Change Password</a>
+                    <%= link_to "Edit Profile", edit_user_registration_path, class: "list-group-item list-group-item-action" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
               <a href="#" class="list-group-item list-group-item-action" data-dismiss="modal">Cancel</a>
             </div>
@@ -33,4 +32,27 @@
       <p class="email"><%= @user.email %></p>
     </div>
   </div>
+  <div class="user-tab">
+    <% if @user == current_user %>
+    <nav>
+      <div class="nav user-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active eo" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="true">POSTS</a>
+        <a class="nav-item nav-link eo" id="nav-saved-tab" data-toggle="tab" href="#nav-saved" role="tab" aria-controls="nav-saved" aria-selected="false">FOLDER</a>
+      </div>
+    </nav>
+    <% end %>
+    <div class="tab-content pb-3" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
+        <div class="row">
+          <%= render "post", {posts: @posts} %>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-saved" role="tabpanel" aria-labelledby="nav-saved-tab">
+        <div class="row">
+          <%= render "post", {posts: @folder} if @user == current_user %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

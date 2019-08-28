@@ -2,9 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post, only: [:show, :destroy]
 
-
   def index
-    @posts = Post.all.includes(:photos, :user).order("created_at desc")
+    @posts = Post.paginate(:page => params[:page], :per_page => 5).includes(:photos, :user, :loves).
+      order("created_at desc")
     @post = Post.new
   end
 
@@ -27,6 +27,10 @@ class PostsController < ApplicationController
 
   def show
     @photos = @post.photos
+    @loves = @post.loves.includes(:user)
+    @is_loved = @post.is_loved(current_user)
+    @is_bookmarked = @post.is_bookmarked(current_user)
+
   end
 
   def destroy

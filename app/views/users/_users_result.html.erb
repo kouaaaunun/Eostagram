@@ -1,0 +1,21 @@
+<% if hash_tags.present? %>
+  <% hash_tags.each do |hash_tag| %>
+    <%= link_to page_path(hash_tag), class: "no-text-decoration normal-color" do %>
+      <div class="search-result-item"><%= hash_tag.name %></div>
+    <% end %>
+  <% end %>
+<% elsif users.present? %>
+  <% users.each do |user| %>
+    <%= link_to user_path(user), class: "no-text-decoration normal-color" do %>
+      <div class="search-result-item"><%= user.name %></div>
+    <% end %>
+  <% end %>
+<% elsif white.present? %>
+    <div class="p-3">
+      To serch hash tags, please type "#~~~"
+  </div>
+<% else %>
+  <div class="p-3">
+    No results found.
+  </div>
+<% end %>
