@@ -6,10 +6,10 @@ class User < ApplicationRecord
   has_many :loves
   has_many :comments
   has_many :bookmarks
-  has_many :relations
-  has_many :followings, through: :relations, source: :follow
-  has_many :reverse_of_relations, class_name: 'Relation', foreign_key: 'follow_id'
-  has_many :followers, through: :reverse_of_relations, source: :user
+  has_many :follower_relationships, foreign_key: :following_id, class_name: 'Relation', dependent: :destroy
+  has_many :followers, through: :follower_relationships, source: :follower
+  has_many :following_relationships, foreign_key: :follower_id, class_name: 'Relation', dependent: :destroy
+  has_many :following, through: :following_relationships, source: :following
 
 
   devise :database_authenticatable, :registerable,
@@ -37,22 +37,14 @@ class User < ApplicationRecord
       nil
     end
   end
-  def follow(other_user)
-    unless self == other_user
-      self.relations.find_or_create_by(follow_id: other_user.id)
-    end
+  
+  def follow(user_id)
+    following_relationships.create(following_id: user_id)
   end
 
-  def unfollow(other_user)
-    relation = self.relations.find_by(follow_id: other_user.id)
-    relation.destroy if relation
+  def unfollow(user_id)
+    following_relationships.find_by(following_id: user_id).destroy
   end
-
-  def following?(other_user)
-    self.followings.include?(other_user)
-  end
-
-
 
 
 end

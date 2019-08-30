@@ -11,9 +11,13 @@ Rails.application.routes.draw do
   # /users/3 -> Users controller, show action, params {id: '3'}
   resources :users, only: [:index, :show]
   resources :pages, only: [:index, :show]
+  resources :follows, only: [:index] 
+      resources :relations, only: [:create, :destroy]
   resources :events, only: [:index, :show, :create, :destroy] do
     resources :likes, only: [:create, :destroy], shallow: true
   end
+  post '/users/:id/follow_user' => 'relations#follow_user'
+
   resources :posts, only: [:index, :show, :create, :destroy] do
     resources :photos, only: [:create]
     resources :loves, only: [:create, :destroy], shallow: true

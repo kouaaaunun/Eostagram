@@ -20,7 +20,9 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <a class="nav-link notification-icon" href="#"><i class="fas fa-ghost fa-2x fa-fw" style="color:pink;"></i></a>
+          <%= link_to follows_path, class: "nav-link notification-icon" do%>
+          <i class="fas fa-ghost fa-2x fa-fw" style="color:pink;"></i>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to events_path, class: "nav-link notification-icon" do%>

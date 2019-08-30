@@ -1,18 +1,37 @@
-<div class="col-md-4">
-						<div class="team-item">
-							<div class="team-image">
-								<img src="images/demo/author-4.jpg" class="img-responsive" alt="author">
-							</div>
-							<div class="team-text">
-								<h3>John BEKERS</h3>
-								<div class="team-position">Marketing</div>
-								<p>Dolor sit don namet, cons uectetur beriscing adon elit. Aliquam vitae fringilla unda.</p>
-								<div class="team-socials">
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-youtube"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
+<div class="row">
+  <div class="col-xs-4 col-xs-push-4 post">
+    <h1>Listing Users</h1>
+
+    <div class="row list_wrapper">
+      <% @users.each do |user| %>
+        <a href= <%="/users/#{user.id}"%>>
+          <div class="row list-head">
+            <div class="col-xs-2 thumb-img list">
+              <%= image_tag user.profile_picture.url(:thumb), class: 'img-responsive img-circle' %>
+            </div>
+            <div class="col-xs-10 user-info">
+              <h3>
+                <strong> <%= user.username %> </strong><br>
+                <small><strong> <%= user.name %> </strong> <%= user.bio %></small>
+              </h3>
+            </div>
+          </div>
+        </a>
+      <% end %>
+
+      <div class="row">
+        <div class="col-xs-12 link">
+          <a href="/posts"><h3>Return to Home</h3></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 space">
+  </div>
+  <div class="col-xs-12 space">
+  </div>
+</div>

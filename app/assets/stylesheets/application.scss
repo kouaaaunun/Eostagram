@@ -507,3 +507,35 @@ body {
 .toast{
   font-family: "eo";
 }
+
+.grid-post{
+  margin-bottom: 16px;
+  margin-top: 16px;}
+
+.col-xs-2.col-xs-push-2.img{
+  padding: 0;
+}
+
+.col-xs-10.user-info{
+  color: #555;
+  text-decoration: none;}
+
+.col-xs-2.thumb-img.list{
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;}
+
+.row.list-head{
+  padding: 12px;
+  border: solid #E0E0E0;
+  border-width: 0 0 2px 0;}
+
+.row.list-head:hover{
+  background-color: #F0F0F0;
+  border-width: 2px;}
+
+.col-xs-4.col-xs-push-4.post h1{
+  text-align: center;}
+
+.col-xs-12.link h3{
+  text-align: center;
+  text-decoration: none;}
