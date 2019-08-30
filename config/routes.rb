@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show, :create, :destroy] do
     resources :likes, only: [:create, :destroy], shallow: true
   end
-  post '/users/:id/follow_user' => 'relations#follow_user'
+  post '/users/:id/follow_user' => 'follows#follow_user'
+  post '/users/:id/unfollow_user' => 'follows#unfollow_user'
 
   resources :posts, only: [:index, :show, :create, :destroy] do
     resources :photos, only: [:create]

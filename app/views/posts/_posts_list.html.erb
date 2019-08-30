@@ -15,15 +15,15 @@
       <% end %>
     </div>
 
-    <%= render "photos", {post: post} %>
+    <%= render "posts/photos", {post: post} %>
 
     <div class="card-body">
       <div class="row actions">
         <div id="love-icon-post-<%= post.id.to_s %>">
-          <%= render "love_icon", {is_loved: post.is_loved(current_user), post: post} %>
+          <%= render "posts/love_icon", {is_loved: post.is_loved(current_user), post: post} %>
         </div>
         <div id="bookmark-icon-post-<%= post.id.to_s %>">
-            <%= render "bookmark_icon", {is_bookmarked: post.is_bookmarked(current_user), post: post} %>
+            <%= render "posts/bookmark_icon", {is_bookmarked: post.is_bookmarked(current_user), post: post} %>
         </div>
       </div>
       
@@ -37,15 +37,15 @@
       <!-- load comments -->
       
       <div id="love-text-post-<%= post.id.to_s %>">
-        <%= render "love_text", {loves: post.loves} %>
+        <%= render "posts/love_text", {loves: post.loves} %>
       </div>
       
       <div id="comment-post-<%= post.id.to_s %>">
-        <%= render 'comment_list', {post: post} %>
+        <%= render 'posts/comment_list', {post: post} %>
       </div>
       <hr>
       <div class="row actions" id="comment-form-post-<%= post.id.to_s %>">
-        <%= render 'comment_form', {post: post} %>
+        <%= render 'posts/comment_form', {post: post} %>
       </div>
     </div>
   </div>

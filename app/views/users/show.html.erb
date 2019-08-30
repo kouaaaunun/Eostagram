@@ -7,7 +7,12 @@
       <p class="username"><%= @user.name %></p>
       <% if @user == current_user %>
         <div class="setting pl-5" data-toggle="modal" data-target="#exampleModal"><i class="far fa-keyboard fa-2x fa-fw""></i></div>
-      <% end %>
+                    <% elsif current_user_is_following(current_user.id, @user.id) %>
+                <div class="mt-3"><%= link_to 'Following', "/users/#{@user.id}/unfollow_user", method: :post, class: "btn-sm btn-primary ml-2" %></div>
+              <% else %>
+                <div class="mt-3"><%= link_to 'Follow', "/users/#{@user.id}/follow_user", method: :post, class:"btn-sm btn-light ml-2" %></div>
+              <% end %>
+
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
