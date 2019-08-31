@@ -1,0 +1,21 @@
+<div class="setblc">
+  <h2 class="storerankingttl">
+    <ul class="storerankingdrop">
+      <li class="sel">いいねランキング</li>
+    </ul>
+  </h2>
+  <ul class="storerankingblc cf itemView">
+    <li class="js-matchHeight item_li_view ranking_views" style="height: 400px;">
+      <div class="store_new">
+        <p><span><%= time_ago_in_words(post.created_at).upcase + " AGO" %></span></p>
+      </div> <%= sum %>
+      <figure>
+          <%= link_to post_path(rank) do %>
+
+							<img src="/contents2/product/1059/LGD-70063_rank.jpg" alt="秋山凜子抱き枕カバー ～恥じらいAVデビュー、凜子はザーメン欲しがり女のコドラマＣＤ付き～" class="hover_img">
+						</a> </figure>
+      <p class="itemttl ellipse">秋山凜子抱き枕カバー ～恥じらいAVデビュー、凜子はザーメン欲しがり女のコドラマＣＤ付き～</p>
+      <p class="itemprice"> 12,960<span class="en">円</span> </p>
+    </li>
+  </ul>
+</div>
